@@ -800,7 +800,7 @@ footer{background:#040200;border-top:1px solid var(--border);padding:60px 5% 26p
 </section>
 
 <!-- ══ COMPANY ══ -->
-<section class="co-s" id="company" style="display:none">
+<section class="co-s" id="company">
   <div class="co-inner">
     <div class="eyebrow rev">Official Details</div>
     <h2 class="stitle rev d1">Company <em>Info</em></h2>
@@ -828,7 +828,7 @@ footer{background:#040200;border-top:1px solid var(--border);padding:60px 5% 26p
         <p class="ssub rev" style="margin-bottom:0">Whether you want to order, subscribe, plan a corporate meal or say hi — we're always in the kitchen.</p>
         <div class="cinfos">
           <div class="cirow rev d1"><div class="ciico">📍</div><div><div class="cilbl">Kitchen Address</div><div class="cival">C/O Dinesh Kakde, Maruti Niwas,<br/>Opp. IIT Main Gate, Mumbai 400076</div></div></div>
-          <div class="cirow rev d2"><div class="ciico">✉️</div><div><div class="cilbl">Email</div><div class="cival"><a href="mailto:anandsamiksa12@gmail.com">anandsamiksa12@gmail.com</a></div></div></div>
+          <div class="cirow rev d2"><div class="ciico">✉️</div><div><div class="cilbl">Email</div><div class="cival"><a href="/cdn-cgi/l/email-protection#2e4f404f404a5d4f4347455d4f1f1c6e49434f4742004d4143"><span class="__cf_email__" data-cfemail="bcddd2ddd2d8cfddd1d5d7cfdd8d8efcdbd1ddd5d092dfd3d1">[email&#160;protected]</span></a></div></div></div>
           <div class="cirow rev d3"><div class="ciico">📱</div><div><div class="cilbl">WhatsApp / Phone</div><div class="cival"><a href="https://wa.me/919082807803">+91 90828 07803</a></div></div></div>
           <div class="cirow rev d4"><div class="ciico">⏰</div><div><div class="cilbl">Kitchen Hours</div><div class="cival">Monday – Sunday · 7:00 AM – 10:30 PM</div></div></div>
         </div>
@@ -836,8 +836,8 @@ footer{background:#040200;border-top:1px solid var(--border);padding:60px 5% 26p
       </div>
       <div class="cform rev d2">
         <div class="frow">
-          <div class="fg"><label>First Name</label><input type="text" placeholder="Rahul"/></div>
-          <div class="fg"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+          <div class="fg"><label>First Name</label><input type="text" id="cfname" placeholder="Rahul"/></div>
+          <div class="fg"><label>Last Name</label><input type="text" id="clname" placeholder="Sharma"/></div>
         </div>
         <div class="fg"><label>Email</label><input type="email" id="cemail" placeholder="your@email.com"/></div>
         <div class="fg"><label>Phone</label><input type="tel" id="cphone" placeholder="+91 98765 43210"/></div>
@@ -851,8 +851,15 @@ footer{background:#040200;border-top:1px solid var(--border);padding:60px 5% 26p
             <option>General Inquiry</option>
           </select>
         </div>
-        <div class="fg"><label>Message</label><textarea rows="4" id="cmsg" placeholder="Tell us what you need..."></textarea></div>
-        <button class="fsub" onclick="submitEnquiry()">Send via WhatsApp 📲</button>
+        <div class="fg">
+          <label>Message <span id="autoHint" style="color:var(--fire);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;margin-left:8px;opacity:0;transition:opacity .3s">— WhatsApp auto-opens on blur ⚡</span></label>
+          <textarea rows="4" id="cmsg" placeholder="Tell us what you need... (WhatsApp will open automatically when you click away)" onblur="autoSubmitEnquiry()" onfocus="document.getElementById('autoHint').style.opacity='1'"></textarea>
+        </div>
+        <!-- Toast -->
+        <div id="enqToast" style="display:none;align-items:center;gap:10px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.3);border-radius:10px;padding:12px 16px;font-size:.78rem;color:#25D366;font-weight:600;">
+          <span style="font-size:1.2rem">✅</span> WhatsApp opened! Your enquiry is being sent to Samiksa.
+        </div>
+        <button class="fsub" id="enqBtn" onclick="submitEnquiry()">Send via WhatsApp 📲</button>
       </div>
     </div>
   </div>
@@ -868,12 +875,12 @@ footer{background:#040200;border-top:1px solid var(--border);padding:60px 5% 26p
       <div class="fcin"><div class="fcinl">CIN Number</div><div class="fcinv">U10790MH2025PTC454249</div></div>
       <div class="fsocial">
         <a class="fsoc-btn fsoc-wa" href="https://wa.me/919082807803" target="_blank">💬 WhatsApp</a>
-        <a class="fsoc-btn fsoc-ig" href="mailto:anandsamiksa12@gmail.com">✉️ Email Us</a>
+        <a class="fsoc-btn fsoc-ig" href="/cdn-cgi/l/email-protection#76171817181205171b1f1d0517474436111b171f1a5815191b">✉️ Email Us</a>
       </div>
     </div>
     <div class="fcol"><h4>Explore</h4><ul><li><a href="#about">Our Story</a></li><li><a href="#services">Services</a></li><li><a href="#menu">Menu</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#team">Team</a></li></ul></div>
     <div class="fcol"><h4>Services</h4><ul><li><a href="#services">Tiffin Plans</a></li><li><a href="#services">Corporate Meals</a></li><li><a href="#services">Event Catering</a></li><li><a href="#services">Food Products</a></li></ul></div>
-    <div class="fcol"><h4>Contact</h4><ul><li><a href="https://wa.me/919082807803" target="_blank">+91 90828 07803</a></li><li><a href="mailto:anandsamiksa12@gmail.com">anandsamiksa12@gmail.com</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+    <div class="fcol"><h4>Contact</h4><ul><li><a href="https://wa.me/919082807803" target="_blank">+91 90828 07803</a></li><li><a href="/cdn-cgi/l/email-protection#5a3b343b343e293b373331293b6b681a3d373b333674393537"><span class="__cf_email__" data-cfemail="69080708070d1a080400021a08585b290e04080005470a0604">[email&#160;protected]</span></a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
   </div>
   <div class="fbot">
     <p>© 2025–2026 <strong>Samiksa Food Private Limited</strong>. All rights reserved.</p>
@@ -881,7 +888,7 @@ footer{background:#040200;border-top:1px solid var(--border);padding:60px 5% 26p
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── Cursor ── */
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
@@ -984,21 +991,36 @@ function submitReview(){
 }
 
 /* ── Contact Form → WhatsApp ── */
-function submitEnquiry(){
-  const name=document.querySelector('.cont-s .frow input').value||'Customer';
-  const email=document.getElementById('cemail').value;
-  const phone=document.getElementById('cphone').value;
+function buildEnquiryMsg(){
+  const fname=document.getElementById('cfname').value.trim()||'Customer';
+  const lname=document.getElementById('clname').value.trim();
+  const name=lname?`${fname} ${lname}`:fname;
+  const email=document.getElementById('cemail').value.trim();
+  const phone=document.getElementById('cphone').value.trim();
   const service=document.getElementById('cservice').value;
-  const msg=document.getElementById('cmsg').value;
-  const wa=`Hi Samiksa! 🙏 New Enquiry:%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Phone:* ${phone}%0A*Service:* ${service}%0A*Message:* ${msg||'—'}`;
-  window.open(`https://wa.me/919082807803?text=${wa}`,'_blank');
+  const msg=document.getElementById('cmsg').value.trim();
+  return{name,email,phone,service,msg};
 }
+function fireEnquiry(){
+  const {name,email,phone,service,msg}=buildEnquiryMsg();
+  const wa=`Hi Samiksa! 🙏 New Enquiry:%0A%0A*Name:* ${name}%0A*Email:* ${email||'—'}%0A*Phone:* ${phone||'—'}%0A*Service:* ${service}%0A*Message:* ${msg||'—'}`;
+  window.open(`https://wa.me/919082807803?text=${wa}`,'_blank');
+  // Show toast, hide button temporarily
+  const toast=document.getElementById('enqToast');
+  const btn=document.getElementById('enqBtn');
+  toast.style.display='flex';btn.style.display='none';
+  setTimeout(()=>{toast.style.display='none';btn.style.display='block';},5000);
+}
+function autoSubmitEnquiry(){
+  // Auto-fire only if at least name OR phone is filled
+  const name=document.getElementById('cfname').value.trim();
+  const phone=document.getElementById('cphone').value.trim();
+  const msg=document.getElementById('cmsg').value.trim();
+  if((name||phone)&&msg){fireEnquiry();}
+}
+function submitEnquiry(){fireEnquiry();}
+/* legacy stub — end */
 
-/* ── Magnetic buttons ── */
-document.querySelectorAll('.bfire,.bghost,.nav-wa,.obtn').forEach(el=>{
-  el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left-r.width/2)*.2,y=(e.clientY-r.top-r.height/2)*.2;el.style.transform=`translate(${x}px,${y}px)`});
-  el.addEventListener('mouseleave',()=>el.style.transform='');
-});
 </script>
 </body>
 </html>
